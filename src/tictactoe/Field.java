@@ -163,11 +163,6 @@ public class Field {
         int randInt;
         randInt = random.nextInt(emptyCellLine().size());
         Stroke computerStroke = new Stroke(emptyCellLine().get(randInt).getX(), emptyCellLine().get(randInt).getY(), mark);
-//
-//        computerStroke.x = emptyCellLine().get(randInt).x;
-//        computerStroke.y = emptyCellLine().get(randInt).y;
-//        computerStroke.mark = mark;
-//
 
         return computerStroke;
 
