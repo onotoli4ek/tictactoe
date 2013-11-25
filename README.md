@@ -1,2 +1,3 @@
 tictactoe
 =========
+Author Syvaschenko Anatoliy
