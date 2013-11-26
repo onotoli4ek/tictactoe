@@ -37,11 +37,8 @@ public class Field {
         } else {
             entered = false;
         }
-        if (diagonalWinner(Mark.X) || columnWinner(Mark.X) || lineWinner(Mark.X) || diagonalNegativeWinner(Mark.X)) {
-            winner = Mark.X;
-            gameOver = true;
-        } else if (diagonalWinner(Mark.O) || columnWinner(Mark.O) || lineWinner(Mark.O) || diagonalNegativeWinner(Mark.O)) {
-            winner = Mark.O;
+        if (diagonalWinner(stroke.getMark()) || columnWinner(stroke.getMark()) || lineWinner(stroke.getMark()) || diagonalNegativeWinner(stroke.getMark())) {
+            winner = stroke.getMark();
             gameOver = true;
         } else if (isDrawnGame()) {
             winner = Mark.DRAW;
