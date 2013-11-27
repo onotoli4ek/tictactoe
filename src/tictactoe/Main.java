@@ -6,7 +6,7 @@ public class Main {
 
         Field field = new Field();
         IOHelper ioHelper = new IOHelper();
-        System.out.println("The best game of the world!");
+        Computer comp = new Computer();
         while (!field.isGameOver()) {
             System.out.println("Please enter X");
             while (!field.makeStroke(ioHelper.getStroke(Mark.X))) {
@@ -14,7 +14,7 @@ public class Main {
             ioHelper.printField(field);
             if (!field.isGameOver()) {
                 System.out.println("Please enter O");
-                while (!field.makeStroke(field.computerGenerateStroke(Mark.O))) {
+                while (!field.makeStroke(comp.computerGenerateStroke(Mark.O, field))) {
                 }
                 ioHelper.printField(field);
             }

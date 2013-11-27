@@ -17,6 +17,20 @@ public class Stroke {
         this.mark = mark;
     }
 
+    public void setX(int x) {
+        if (x > 0 && x < Field.DEFAULT_FIELD_SIZE)
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        if (y > 0 && y < Field.DEFAULT_FIELD_SIZE)
+        this.y = y;
+    }
+
+    public void setMark(Mark mark) {
+        this.mark = mark;
+    }
+
     public int getX() {
         return x;
     }

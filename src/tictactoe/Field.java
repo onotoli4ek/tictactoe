@@ -1,9 +1,6 @@
 package tictactoe;
 
 
-import java.util.ArrayList;
-import java.util.Random;
-
 public class Field {
 
     public static final int DEFAULT_FIELD_SIZE = 3;
@@ -22,6 +19,10 @@ public class Field {
         fieldGame = new Mark[this.size][this.size];
         eraseField();
     }
+    public void setMark(int x, int y, Mark mark)  {
+        fieldGame[x][y] = mark;
+
+    }
 
     public Mark getMark(int x, int y) {
         return fieldGame[x][y];
@@ -37,8 +38,23 @@ public class Field {
         } else {
             entered = false;
         }
-        if (diagonalWinner(stroke.getMark()) || columnWinner(stroke.getMark()) || lineWinner(stroke.getMark()) || diagonalNegativeWinner(stroke.getMark())) {
-            winner = stroke.getMark();
+        checkGameOver(stroke.getMark());
+//        if (checkGameOver(stroke.getMark())) {
+//            winner = stroke.getMark();
+//            gameOver = true;
+//        } else if (isDrawnGame()) {
+//            winner = Mark.DRAW;
+//            gameOver = true;
+//        } else {
+//            winner = Mark.N;
+//            gameOver = false;
+//        }
+        return entered;
+    }
+
+    public boolean checkGameOver(Mark mark){
+        if (diagonalWinner(mark) || columnWinner(mark) || lineWinner(mark) || diagonalNegativeWinner(mark)) {
+            winner = mark;
             gameOver = true;
         } else if (isDrawnGame()) {
             winner = Mark.DRAW;
@@ -47,7 +63,9 @@ public class Field {
             winner = Mark.N;
             gameOver = false;
         }
-        return entered;
+        return gameOver;
+//        return diagonalWinner(mark) || columnWinner(mark) || lineWinner(mark) || diagonalNegativeWinner(mark);
+
     }
 
 
@@ -155,32 +173,32 @@ public class Field {
         return state;
     }
 
-    public Stroke computerGenerateStroke(Mark mark) {
-        Random random = new Random();
-        int randInt;
-        randInt = random.nextInt(emptyCellLine().size());
-        Stroke computerStroke = new Stroke(emptyCellLine().get(randInt).getX(), emptyCellLine().get(randInt).getY(), mark);
+//    public Stroke computerGenerateStroke(Mark mark) {
+//        Random random = new Random();
+//        int randInt;
+//        randInt = random.nextInt(emptyCellLine().size());
+//        Stroke computerStroke = new Stroke(emptyCellLine().get(randInt).getX(), emptyCellLine().get(randInt).getY(), mark);
+//
+//        return computerStroke;
+//
+//    }
+//
+//    private ArrayList<Stroke> emptyCellLine() {
+//        ArrayList<Stroke> arrStroke = new ArrayList<Stroke>();
+//        int n = 0;
+//        for (int j = 0; j != DEFAULT_FIELD_SIZE; j++) {
+//            for (int i = 0; i != DEFAULT_FIELD_SIZE; i++) {
+//                if (fieldGame[i][j] == Mark.N) {
+//                    Stroke stroke = new Stroke(i, j, Mark.N);
+//                    arrStroke.add(n, stroke);
+//                    n++;
+//                }
+//            }
+//        }
+//        return arrStroke;
+//    }
 
-        return computerStroke;
-
-    }
-
-    private ArrayList<Stroke> emptyCellLine() {
-        ArrayList<Stroke> arrStroke = new ArrayList<Stroke>();
-        int n = 0;
-        for (int j = 0; j != DEFAULT_FIELD_SIZE; j++) {
-            for (int i = 0; i != DEFAULT_FIELD_SIZE; i++) {
-                if (fieldGame[i][j] == Mark.N) {
-                    Stroke stroke = new Stroke(i, j, Mark.N);
-                    arrStroke.add(n, stroke);
-                    n++;
-                }
-            }
-        }
-        return arrStroke;
-    }
-
-    private void eraseField() {
+    public void eraseField() {
         for (int i = 0; i < DEFAULT_FIELD_SIZE; i++) {
             eraseLine(i);
         }
