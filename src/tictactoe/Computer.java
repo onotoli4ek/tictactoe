@@ -5,6 +5,8 @@ import java.util.Random;
 
 public class Computer {
     public Field checkField = new Field();
+    private static int CENTER_COORDINATE_X_OF_FIELD = (Field.DEFAULT_FIELD_SIZE - 1)/2;
+    private static int CENTER_COORDINATE_Y_OF_FIELD = (Field.DEFAULT_FIELD_SIZE - 1)/2;
 
     public Field initialCheckField (Field field1, Field field2)   {
         for (int j = 0; j != Field.DEFAULT_FIELD_SIZE; j++) {
@@ -60,11 +62,11 @@ public class Computer {
                 }
             }
         }
-        if ((!endCheck) && (field.getMark(1, 1) == Mark.N)) {             // поменять на переменные
-            computerStroke.setX(1);
-            computerStroke.setY(1);
+        if ((!endCheck) && (field.getMark(CENTER_COORDINATE_X_OF_FIELD, CENTER_COORDINATE_Y_OF_FIELD) == Mark.N)) {
+            computerStroke.setX(CENTER_COORDINATE_X_OF_FIELD);
+            computerStroke.setY(CENTER_COORDINATE_Y_OF_FIELD);
             computerStroke.setMark(mark);
-            checkField.setMark(1, 1, mark);
+            checkField.setMark(CENTER_COORDINATE_X_OF_FIELD, CENTER_COORDINATE_Y_OF_FIELD, mark);
         } else if (!endCheck) {
             Random random = new Random();
             int randInt;
