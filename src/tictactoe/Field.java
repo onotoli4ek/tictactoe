@@ -1,6 +1,8 @@
 package tictactoe;
 
 
+import java.util.ArrayList;
+
 public class Field {
 
     public static final int DEFAULT_FIELD_SIZE = 3;
@@ -9,6 +11,7 @@ public class Field {
     private final int size;
     private boolean gameOver = false;
     private Mark winner;
+    private ArrayList<Stroke> histOfStr = new ArrayList<Stroke>();
 
     public Field() {
         this(DEFAULT_FIELD_SIZE);
@@ -19,10 +22,10 @@ public class Field {
         fieldGame = new Mark[this.size][this.size];
         eraseField();
     }
-    public void setMark(int x, int y, Mark mark)  {
-        fieldGame[x][y] = mark;
-
-    }
+//    public void setMark(int x, int y, Mark mark)  {
+//        fieldGame[x][y] = mark;
+//
+//    }
 
     public Mark getMark(int x, int y) {
         return fieldGame[x][y];
@@ -34,6 +37,7 @@ public class Field {
         boolean entered;
         if (fieldGame[x][y] == Mark.N) {
             fieldGame[x][y] = stroke.getMark();
+            histOfStr.add(stroke);
             entered = true;
         } else {
             entered = false;
@@ -50,6 +54,18 @@ public class Field {
 //            gameOver = false;
 //        }
         return entered;
+    }
+
+
+    public void cancelStroke() {
+        if ( histOfStr.size() > 0 ) {
+            fieldGame[histOfStr.get(histOfStr.size()-1).getX()][histOfStr.get(histOfStr.size()-1).getY()] = Mark.N;
+            histOfStr.remove(histOfStr.size()-1);
+        }
+        if (histOfStr.size() > 1 ) {
+            checkGameOver(histOfStr.get(histOfStr.size()-1).getMark());
+        }
+
     }
 
     public boolean checkGameOver(Mark mark){
