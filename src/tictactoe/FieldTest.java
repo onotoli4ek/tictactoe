@@ -38,6 +38,7 @@ public class FieldTest {
 
         field.makeStroke(new Stroke(0,0,Mark.X));
         field.makeStroke(new Stroke(0,1,Mark.O));
+        field.makeStroke(new Stroke(0,1,Mark.O));
         field.makeStroke(new Stroke(0,2,Mark.X));
         field.makeStroke(new Stroke(1,0,Mark.O));
 

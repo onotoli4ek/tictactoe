@@ -9,7 +9,7 @@ public class Main {
         Computer comp = new Computer();
         while (!field.isGameOver()) {
             System.out.println("Please enter X");
-            while (!field.makeStroke(ioHelper.getStroke(Mark.X))) {
+            while (!field.makeStroke(ioHelper.getStroke(Mark.X, field))) {
             }
             ioHelper.printField(field);
             if (!field.isGameOver()) {

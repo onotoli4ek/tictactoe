@@ -22,10 +22,10 @@ public class Field {
         fieldGame = new Mark[this.size][this.size];
         eraseField();
     }
-//    public void setMark(int x, int y, Mark mark)  {
-//        fieldGame[x][y] = mark;
-//
-//    }
+    public void setMark(int x, int y, Mark mark)  {
+        fieldGame[x][y] = mark;
+
+    }
 
     public Mark getMark(int x, int y) {
         return fieldGame[x][y];
@@ -188,31 +188,6 @@ public class Field {
         }
         return state;
     }
-
-//    public Stroke computerGenerateStroke(Mark mark) {
-//        Random random = new Random();
-//        int randInt;
-//        randInt = random.nextInt(emptyCellLine().size());
-//        Stroke computerStroke = new Stroke(emptyCellLine().get(randInt).getX(), emptyCellLine().get(randInt).getY(), mark);
-//
-//        return computerStroke;
-//
-//    }
-//
-//    private ArrayList<Stroke> emptyCellLine() {
-//        ArrayList<Stroke> arrStroke = new ArrayList<Stroke>();
-//        int n = 0;
-//        for (int j = 0; j != DEFAULT_FIELD_SIZE; j++) {
-//            for (int i = 0; i != DEFAULT_FIELD_SIZE; i++) {
-//                if (fieldGame[i][j] == Mark.N) {
-//                    Stroke stroke = new Stroke(i, j, Mark.N);
-//                    arrStroke.add(n, stroke);
-//                    n++;
-//                }
-//            }
-//        }
-//        return arrStroke;
-//    }
 
     public void eraseField() {
         for (int i = 0; i < DEFAULT_FIELD_SIZE; i++) {

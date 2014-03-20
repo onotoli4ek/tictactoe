@@ -9,9 +9,19 @@ public class IOHelper {
     private static final String AXIS_X = "x";
     private static final String AXIS_Y = "y";
 
-    public Stroke getStroke(Mark mark) {
-        return new Stroke(correctInput(AXIS_X), correctInput(AXIS_Y), mark);
+    public Stroke getStroke(Mark mark, Field field) {
+        Stroke temporaryStroke = new Stroke();
+        temporaryStroke.setX(correctInput(AXIS_X));
+        temporaryStroke.setY(correctInput(AXIS_Y));
+        temporaryStroke.setMark(mark);
+        if (field.getMark(temporaryStroke.getX(),temporaryStroke.getY()) == Mark.N) {
+            return temporaryStroke;
+        }   else {
+            System.out.println("This cell has marked. Try again");
+            return new Stroke(temporaryStroke.getX(), temporaryStroke.getY(), field.getMark(temporaryStroke.getX(),temporaryStroke.getY()));
+        }
     }
+
 
     private int correctInput(String strCoordinate) {
         String inputLine = " ";
