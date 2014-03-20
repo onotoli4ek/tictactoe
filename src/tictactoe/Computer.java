@@ -12,8 +12,8 @@ public class Computer {
         for (int j = 0; j != Field.DEFAULT_FIELD_SIZE; j++) {
             for (int i = 0; i != Field.DEFAULT_FIELD_SIZE; i++) {
                 switch (field1.getMark(i, j)) {
-                    case DRAW:
-                        field2.makeStroke(new Stroke(i,j,Mark.DRAW));
+                    case N:
+                        field2.makeStroke(new Stroke(i,j,Mark.N));
                     case O:
                         field2.makeStroke(new Stroke(i,j,Mark.O));
                     case X:
