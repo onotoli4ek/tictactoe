@@ -5,6 +5,8 @@ public class Main {
     public static void main(String[] args) {
 
         Field field = new Field();
+        //test
+        System.out.println("test");
         IOHelper ioHelper = new IOHelper();
         Computer comp = new Computer();
         while (!field.isGameOver()) {
